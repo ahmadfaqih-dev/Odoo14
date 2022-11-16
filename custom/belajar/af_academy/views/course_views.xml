@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <!--   Actions opening views on models     -->
+        <record model="ir.actions.act_window" id="af_academy.action_window">
+        <field name="name">Course</field>
+        <field name="res_model">academy.course</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    Action    -->
+        <menuitem name="Course"
+                  id="af_academy.menu_act"
+                  parent="af_academy.menu_1"
+                  action="af_academy.action_window"
+                  sequence="10"
+        />
+
+    </data>
+</odoo>
+
