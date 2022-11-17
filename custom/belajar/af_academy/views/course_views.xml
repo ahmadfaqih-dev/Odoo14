@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!--    Explicit list view definition (Tree View)    -->
+        <record model="ir.ui.view" id="af_academy.list">
+          <field name="name">af_academy list</field>
+          <field name="model">academy.course</field>
+          <field name="arch" type="xml">
+            <tree>
+              <field name="name"/>
+              <field name="description"/>
+              <field name="active"/>
+            </tree>
+          </field>
+        </record>
+
+        <!--    Explicit form view definition (Form View)    -->
+        <record model="ir.ui.view" id="af_academy.form">
+          <field name="name">af_academy form</field>
+          <field name="model">academy.course</field>
+          <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Description" name="description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+          </field>
+        </record>
+
+        <!--   Search View     -->
+        <record model="ir.ui.view" id="af_academy.search">
+          <field name="name">af_academy list</field>
+          <field name="model">academy.course</field>
+          <field name="arch" type="xml">
+            <search string="Search Course">
+                <field name="name"/>
+                <field name="description"/>
+
+                <!--   Custom Filter      -->
+                <filter name="php" string="PHP" domain="[('name','ilike','php')]"/>
+            </search>
+          </field>
+        </record>
+
+
     <!--   Actions opening views on models     -->
         <record model="ir.actions.act_window" id="af_academy.action_window">
-        <field name="name">Course</field>
-        <field name="res_model">academy.course</field>
-        <field name="view_mode">tree,form</field>
-    </record>
+            <field name="name">Course</field>
+            <field name="res_model">academy.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
     <!--    Action    -->
         <menuitem name="Course"
                   id="af_academy.menu_act"
