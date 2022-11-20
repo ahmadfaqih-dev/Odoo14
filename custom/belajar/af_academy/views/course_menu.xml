@@ -2,9 +2,9 @@
 <odoo>
     <data>
     <!--   Menu item     -->
-        <menuitem name="AF Academy" id="af_academy.menu_root"/>
+        <menuitem name="AF academy" id="menu_academy_root"/>
     <!--   Menu categories    -->
-        <menuitem name="Data Master" id="af_academy.menu_1" parent="af_academy.menu_root" sequence="20"/>
+        <menuitem name="Data Master" id="menu_course" parent="menu_academy_root" sequence="20"/>
     </data>
 </odoo>
 

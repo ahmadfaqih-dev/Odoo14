@@ -2,20 +2,21 @@
 <odoo>
     <data>
         <!--    Explicit list view definition (Tree View)    -->
-        <record model="ir.ui.view" id="af_academy.list">
+        <record model="ir.ui.view" id="view_course_tree">
           <field name="name">af_academy list</field>
           <field name="model">academy.course</field>
           <field name="arch" type="xml">
             <tree>
-              <field name="name"/>
-              <field name="description"/>
-              <field name="active"/>
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="description"/>
+                <field name="active"/>
             </tree>
           </field>
         </record>
 
         <!--    Explicit form view definition (Form View)    -->
-        <record model="ir.ui.view" id="af_academy.form">
+        <record model="ir.ui.view" id="view_course_form">
           <field name="name">af_academy form</field>
           <field name="model">academy.course</field>
           <field name="arch" type="xml">
@@ -24,6 +25,7 @@
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="category_id"/>
                         </group>
                         <group>
                             <field name="active"/>
@@ -42,35 +44,40 @@
         </record>
 
         <!--   Search View     -->
-        <record model="ir.ui.view" id="af_academy.search">
+        <record model="ir.ui.view" id="view_course_search">
           <field name="name">af_academy list</field>
           <field name="model">academy.course</field>
           <field name="arch" type="xml">
             <search string="Search Course">
                 <field name="name"/>
                 <field name="description"/>
+                <field name="category_id"/>
 
                 <!--   Custom Filter      -->
                 <filter name="php" string="PHP" domain="[('name','ilike','php')]"/>
+                <group string="Group by">
+                    <filter name="group_by_category"
+                            string="Category"
+                            context="{'group_by': 'category_id'}"/>
+                </group>
             </search>
           </field>
         </record>
 
-
     <!--   Actions opening views on models     -->
-        <record model="ir.actions.act_window" id="af_academy.action_window">
+        <record model="ir.actions.act_window" id="action_academy_course">
             <field name="name">Course</field>
             <field name="res_model">academy.course</field>
             <field name="view_mode">tree,form</field>
         </record>
     <!--    Action    -->
+
         <menuitem name="Course"
-                  id="af_academy.menu_act"
-                  parent="af_academy.menu_1"
-                  action="af_academy.action_window"
+                  id="menu_academy_course"
+                  parent="menu_course"
+                  action="action_academy_course"
                   sequence="10"
         />
-
     </data>
 </odoo>
 

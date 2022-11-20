@@ -26,10 +26,10 @@
         'security/ir.model.access.csv',
         'views/course_menu.xml',
         'views/course_views.xml',
-        'views/templates.xml',
+        'views/course_categ_views.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
+        # 'demo/demo.xml',
     ],
 }

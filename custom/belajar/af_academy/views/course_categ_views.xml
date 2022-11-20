@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_course_categ_tree">
+            <field name="name">course.categ.tree</field>
+            <field name="model">course.categ</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_course_categ_form">
+            <field name="name">course.categ.form</field>
+            <field name="model">course.categ</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="active"/>
+                        </group>
+                        <notebook>
+                            <page string="Description" name="description">
+                                <field name="description"/>
+                            </page>
+                            <page string="Course" name="course">
+                                <field name="course_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_course_categ_search">
+            <field name="name">course.categ.search</field>
+            <field name="model">course.categ</field>
+            <field name="arch" type="xml">
+               <search string="Search Course Cateogries">
+                   <field name="name"/>
+                   <field name="description"/>
+               </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_course_categ">
+            <field name="name">Course Categories</field>
+            <field name="res_model">course.categ</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Course Categories"
+                  id="menu_course_categ"
+                  parent="menu_course"
+                  action="action_course_categ"
+                  sequence="20"
+        />
+    </data>
+</odoo>

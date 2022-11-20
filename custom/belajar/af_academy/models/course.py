@@ -1,8 +1,8 @@
 from odoo import fields, models
 
-class Course(models.Model):
+class AcademyCourse(models.Model):
     _name = 'academy.course'
-    _description = 'Data Course'
+    _description = 'Academy Course'
 
     name = fields.Char(
         string='Course Name',
@@ -17,4 +17,10 @@ class Course(models.Model):
     active = fields.Boolean(
         string='Active',
         default=True
+    )
+
+    category_id = fields.Many2one(
+        comodel_name='course.categ',
+        string='Category',
+        required=False
     )
